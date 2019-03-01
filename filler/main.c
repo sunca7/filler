@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:49:01 by sunakim           #+#    #+#             */
-/*   Updated: 2019/02/26 12:17:00 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/02/28 17:55:39 by sunakim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,12 @@ int			main(void)
 		return (0);
 	while (1)
 	{
+		game.sw++;
 		free_init_info(&game, &p, &ret);
 		if ((parser(0, &game, &p)) != 1)
 			break ;
 		if (solver(&game, &p, &ret, &r) == 1)
-			print_ret(&p, &ret);
+			print_ret(&p, &ret, &game);
 		else
 		{
 			ft_putstr("0 0\n");

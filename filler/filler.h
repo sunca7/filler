@@ -6,13 +6,14 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 16:47:43 by sunakim           #+#    #+#             */
-/*   Updated: 2019/02/26 13:12:40 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/02/28 18:10:41 by sunakim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLER_H
 # define FILLER_H
 # define ABS(x) ((x) < 0 ? -(x) : (x))
+# define MIN(x, y) (x <= y ? x)
 
 # include "./libft/libft.h"
 # include <stdlib.h>
@@ -50,6 +51,7 @@ typedef struct	s_coord
 	int			y;
 	int			i;
 	int			sign;
+	int			zero;
 	int			tmp_x;
 	int			tmp_y;
 }				t_coord;
@@ -71,7 +73,7 @@ char			*find_line(char *find, int fd, int size);
 int				find_player(char *line, t_game *game);
 int				ft_error(void);
 int				solver(t_game *game, t_piece *p, t_coord *ret, t_attack *r);
-void			print_ret(t_piece *pc, t_coord *coord);
+void			print_ret(t_piece *pc, t_coord *coord, t_game *game);
 int				winner(t_game *game, t_attack *r, t_coord *ret, t_piece *p);
 
 #endif
