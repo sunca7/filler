@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:49:01 by sunakim           #+#    #+#             */
-/*   Updated: 2019/02/28 17:55:39 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/03/01 17:25:28 by sunakim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int	find_plateau(char *line, t_game *game)
 {
 	char *tmp;
 
+	if (line == NULL)
+		return (-1);
 	tmp = NULL;
 	game->pl[0] = 0;
 	game->pl[1] = 0;
@@ -35,6 +37,8 @@ static int	find_plateau(char *line, t_game *game)
 		return (-1);
 	}
 	free(line);
+	if (game->pl[0] < 1 || game->pl[1] < 1)
+		return (-1);
 	return (1);
 }
 

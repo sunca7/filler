@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 12:12:54 by sunakim           #+#    #+#             */
-/*   Updated: 2019/02/26 12:31:42 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/03/01 17:54:49 by sunakim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int			find_player(char *line, t_game *game)
 	int i;
 
 	i = 11;
+	if (line == NULL)
+		return (-1);
 	if (ft_atoi(&(line[10])) == 1)
 	{
 		i = find_end(line, i);

@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 18:53:43 by sunakim           #+#    #+#             */
-/*   Updated: 2019/02/26 12:18:11 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/03/01 17:24:55 by sunakim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ static int	find_plat(char *line, t_piece *p)
 {
 	char *tmp;
 
+	if (line == NULL)
+		return (-1);
 	tmp = NULL;
 	p->plat[0] = 0;
 	p->plat[1] = 0;
@@ -105,6 +107,8 @@ static int	find_plat(char *line, t_piece *p)
 		return (-1);
 	}
 	free(line);
+	if (p->plat[0] < 1 || p->plat[1] < 1)
+		return (-1);
 	return (1);
 }
 
