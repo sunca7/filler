@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 18:53:43 by sunakim           #+#    #+#             */
-/*   Updated: 2019/03/08 18:51:54 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/03/11 10:35:42 by sunakim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	find_piece(int fd, t_piece *p)
 			free(line);
 			return (-1);
 		}
-		if (ft_strlen(line) != (size_t)(p->plat[1]))
+		if (line == NULL || (ft_strlen(line) != (size_t)(p->plat[1])))
 		{
 			free(line);
 			return (-1);
@@ -117,7 +117,7 @@ static int	find_plat(char *line, t_piece *p)
 
 int			parse_piece(int fd, t_piece *p)
 {
-	if ((find_plat(find_line("Piece ", fd, 6), p)) != 1)
+	if ((find_plat(find_line("Piece ", fd), p)) != 1)
 		return (-1);
 	if ((find_piece(fd, p)) != 1)
 		return (-1);

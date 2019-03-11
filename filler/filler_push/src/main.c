@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:49:01 by sunakim           #+#    #+#             */
-/*   Updated: 2019/03/08 18:51:56 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/03/11 10:32:59 by sunakim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ int			main(void)
 	t_attack	r;
 
 	init_filler(&game, &p, &ret, &r);
-	if ((((find_player(find_line("$$$ exec p", 0, 10), &game)) != 1)) ||
-		((find_plateau(find_line("Plateau ", 0, 8), &game)) != 1))
+	if ((((find_player(find_line("$$$ exec p", 0), &game)) != 1)) ||
+		((find_plateau(find_line("Plateau ", 0), &game)) != 1))
 		return (0);
 	while (1)
 	{

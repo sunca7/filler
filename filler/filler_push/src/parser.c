@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 16:47:11 by sunakim           #+#    #+#             */
-/*   Updated: 2019/03/08 18:49:58 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/03/11 11:57:58 by sunakim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ static int	find_map(int fd, char *line, t_game *g)
 {
 	int i;
 
+	if (line == NULL)
+		return (-1);
 	if (!(g->b = (char **)ft_memalloc(sizeof(char*) * ((g->pl[0]) + 1))))
 		return (-1);
 	i = 0;
@@ -76,7 +78,7 @@ static int	find_map(int fd, char *line, t_game *g)
 			if (get_next_line(fd, &line) < 0)
 				return (free_line(line));
 		}
-		if (line != NULL && (ft_strlen(&(line[4])) == (size_t)(g->pl[1])))
+		if (line != NULL && (ft_strlen(line) == (size_t)(g->pl[1] + 4)))
 		{
 			if (!(g->b[i] = ft_strdup(&(line[4]))))
 				return (-1);
@@ -93,7 +95,7 @@ int			parser(int fd, t_game *game, t_piece *p)
 {
 	(game->p == 'o') ? (game->r = 'x') : (0);
 	(game->p == 'x') ? (game->r = 'o') : (0);
-	if ((find_map(fd, find_line("000", fd, 3), game)) != 1)
+	if ((find_map(fd, find_line("000", fd), game)) != 1)
 		return (-1);
 	if ((find_coord(game)) != 1)
 		return (-1);

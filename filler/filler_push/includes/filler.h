@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 16:47:43 by sunakim           #+#    #+#             */
-/*   Updated: 2019/03/08 18:29:39 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/03/11 10:33:50 by sunakim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct	s_piece
 
 int				parser(int fd, t_game *game, t_piece *p);
 int				parse_piece(int fd, t_piece *p);
-char			*find_line(char *find, int fd, int size);
+char			*find_line(char *find, int fd);
 int				find_player(char *line, t_game *game);
 int				ft_error(void);
 int				free_line(char *line);
