@@ -6,7 +6,7 @@
 #    By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/11 15:37:53 by sunakim           #+#    #+#              #
-#    Updated: 2019/03/08 16:13:28 by sunakim          ###   ########.fr        #
+#    Updated: 2019/03/11 17:43:03 by sunakim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC =	./ft_memset.c ./ft_bzero.c ./ft_memcpy.c ./ft_memccpy.c				\
 
 OBJ = 	$(SRC:.c=.o)
 
-HEADER = -I ./
+HEADER = -I ./includes/
 
 FLAGS = -Wall -Wextra -Werror -g
 
