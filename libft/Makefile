@@ -6,13 +6,11 @@
 #    By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/11 15:37:53 by sunakim           #+#    #+#              #
-#    Updated: 2019/03/11 17:43:03 by sunakim          ###   ########.fr        #
+#    Updated: 2019/03/13 14:06:57 by sunakim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-
-SRC =	./ft_memset.c ./ft_bzero.c ./ft_memcpy.c ./ft_memccpy.c				\
+SRCS =	./ft_memset.c ./ft_bzero.c ./ft_memcpy.c ./ft_memccpy.c				\
 		./ft_memchr.c ./ft_memcmp.c ./ft_strlen.c ./ft_strdup.c				\
 		./ft_strncpy.c ./ft_strcat.c ./ft_strncat.c ./ft_strlcat.c			\
 		./ft_strchr.c ./ft_strrchr.c ./ft_strstr.c ./ft_strnstr.c			\
@@ -31,23 +29,37 @@ SRC =	./ft_memset.c ./ft_bzero.c ./ft_memcpy.c ./ft_memccpy.c				\
 		./ft_foreach.c ./ft_any.c ./ft_strndup.c ./get_next_line.c			\
 		./ft_min.c ./ft_max.c ./ft_realloc.c
 
-OBJ = 	$(SRC:.c=.o)
+OBJS = $(patsubst %.c,obj/%.o,$(SRCS))
 
-HEADER = -I ./includes/
+CC = gcc
 
-FLAGS = -Wall -Wextra -Werror -g
+CFLAGS := $(FLAGS) -Wall -Wextra -Werror
+
+INCLUDES = includes/libft.h 
+
+INCLUDE_FOLDERS = -Iincludes/
+
+NAME = libft.a
+
+.PHONY: clean fclean re all
 
 all : $(NAME)
 
-$(NAME) :
-			gcc -c $(FLAGS) $(SRC) $(HEADER)
-			ar rc $(NAME) $(OBJ)
-			ranlib $(NAME)
+$(NAME): $(OBJS)
+		ar rc $@ $^
 
-clean :
-		rm -f $(OBJ)
+obj:
+	mkdir -p obj
+
+obj/%.o: %.c $(INCLUDES) | obj
+		gcc $(CFLAGS) $(INCLUDE_FOLDERS) -c $< -o $@
+
+clean:
+	rm -f $(OBJS)
+	rm -rf obj
 
 fclean : clean
 		rm -f $(NAME)
 
-re : fclean all
+re: fclean
+	$(MAKE) all

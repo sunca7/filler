@@ -6,7 +6,7 @@
 /*   By: sunakim <sunakim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 11:13:57 by sunakim           #+#    #+#             */
-/*   Updated: 2018/11/21 18:12:39 by sunakim          ###   ########.fr       */
+/*   Updated: 2019/03/14 10:21:33 by sunakim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	else
 	{
 		if (!(tmp2 = ft_memalloc(content_size + 1)))
+		{
+			free(tmp);
 			return (NULL);
+		}
 		tmp->content = ft_memcpy(tmp2, content, content_size);
 		tmp->content_size = content_size;
 	}
